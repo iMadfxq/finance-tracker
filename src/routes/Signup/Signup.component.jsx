@@ -1,12 +1,16 @@
 import { useState } from "react"
+import { useSignup } from "../../hooks/useSignup"
 
 export default function Signup() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [username, setUsername] = useState('')
 
+  const {signup, error, isPending} = useSignup()
+
   const handleSubmit = e => {
     e.preventDefault()
+    signup(email, password, username)
   }
 
   return (
@@ -15,18 +19,20 @@ export default function Signup() {
       <form onSubmit={handleSubmit}>
         <label>
           <span>email</span>
-          <input type="text" value={email} onChange={e => setEmail(e.target.value)}/>
+          <input required type="text" value={email} onChange={e => setEmail(e.target.value)}/>
         </label>
         <label>
           <span>password</span>
-          <input type="password" value={password} onChange={e => setPassword(e.target.value)}/>
+          <input required type="password" value={password} onChange={e => setPassword(e.target.value)}/>
         </label>
         <label>
           <span>username</span>
-          <input type="text" value={username} onChange={e => setUsername(e.target.value)}/>
+          <input required type="text" value={username} onChange={e => setUsername(e.target.value)}/>
         </label>
-        <button type="submit">Submit</button>
+        {!isPending && <button type="submit">Submit</button>}
+        {isPending && <button disabled >Processing...</button>}
       </form>
+      {error && <p>{error}</p>}
     </section>
   )
 }
