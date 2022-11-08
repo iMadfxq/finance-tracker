@@ -16,7 +16,7 @@ export default function Nav() {
       <header>
         {user && <h2>Hello, {user.displayName}</h2>}
         <nav>
-          <NavLink to="/home">home</NavLink>
+          <NavLink to="/">home</NavLink>
           {!user && (
             <>
           <NavLink to="/login">login</NavLink>

@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import "./App.scss";
 import { AuthContext } from "./context/AuthContext";
 import Dashboard from "./routes/Dashboard/Dashboard.component";
@@ -9,16 +9,19 @@ import Nav from "./routes/Nav/nav.component";
 import Signup from "./routes/Signup/Signup.component";
 
 function App() {
-  const { authIsReady } = useContext(AuthContext);
+  const { authIsReady, user } = useContext(AuthContext);
   return (
     <>
       {authIsReady && (
         <Routes>
           <Route path="/" element={<Nav />}>
-            <Route path="/home" element={<Home />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/dashboard" element={<Dashboard />} />
+            <Route index path="/" element={<Home />} />
+            <Route
+              path="/login"
+              element={user ? <Navigate to={"/dashboard"} /> : <Login />}
+            />
+            <Route path="/signup" element={user ? <Navigate to={"/dashboard"} /> :<Signup />} />
+            <Route path="/dashboard" element={!user ? <Navigate to={"/login"} /> : <Dashboard />} />
           </Route>
         </Routes>
       )}

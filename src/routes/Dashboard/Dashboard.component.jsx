@@ -1,5 +1,14 @@
+import TransactionForm from "./TransactionForm";
+
 export default function Dashboard() {
   return (
-    <div>Dashboard</div>
+    <>
+      <main>
+        <h2>transactionList</h2>
+      </main>
+      <aside>
+        <TransactionForm />
+      </aside>
+    </>
   )
 }
