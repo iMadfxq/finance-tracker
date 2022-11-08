@@ -17,10 +17,18 @@ export default function Nav() {
         {user && <h2>Hello, {user.displayName}</h2>}
         <nav>
           <NavLink to="/home">home</NavLink>
+          {!user && (
+            <>
           <NavLink to="/login">login</NavLink>
           <NavLink to="/signup">signup</NavLink>
-          <NavLink to="/dashboard">dashboard</NavLink>
-          {user && <button onClick={logout}>LOGOUT</button>}
+            </>
+          )}
+          {user && (
+            <>
+            <NavLink to="/dashboard">dashboard</NavLink>
+            <button onClick={logout}>LOGOUT</button>
+            </>
+          )}
         </nav>
       </header>
       <Outlet />
