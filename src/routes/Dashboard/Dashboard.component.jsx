@@ -1,13 +1,19 @@
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import TransactionForm from "./TransactionForm";
+import { useCollection } from "../../hooks/useCollection";
+import TransactionList from "./TransactionList";
+
 
 export default function Dashboard() {
   const {user} = useContext(AuthContext)
+  const {documents, error} = useCollection('transactions')
+  console.log(documents)
   return (
     <>
       <main>
-        <h2>transactionList</h2>
+        {error && <p>{error}</p>}
+        {documents && <TransactionList documents={documents} />}
       </main>
       <aside>
         <TransactionForm uid={user.uid} />

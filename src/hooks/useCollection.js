@@ -14,6 +14,8 @@ export const useCollection = (collection) => {
       snapshot.docs.forEach((doc) => {
         results.push({...doc.data(), id: doc.id})
       })
+
+      setDocuments(results)
     }, (err) => {
       console.log(err)
       setError('could not fetch the data')
