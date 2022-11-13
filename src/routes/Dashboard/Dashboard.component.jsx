@@ -4,11 +4,14 @@ import TransactionForm from "./TransactionForm";
 import { useCollection } from "../../hooks/useCollection";
 import TransactionList from "./TransactionList";
 
-
 export default function Dashboard() {
-  const {user} = useContext(AuthContext)
-  const {documents, error} = useCollection('transactions', ['uid', '==', user.uid])
-  console.log(documents)
+  const { user } = useContext(AuthContext);
+  const { documents, error } = useCollection("transactions", [
+    "uid",
+    "==",
+    user.uid,
+  ], ['createdAt', 'desc']);
+  console.log(documents);
   return (
     <>
       <main>
@@ -19,5 +22,5 @@ export default function Dashboard() {
         <TransactionForm uid={user.uid} />
       </aside>
     </>
-  )
+  );
 }
