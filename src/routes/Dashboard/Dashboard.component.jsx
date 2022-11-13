@@ -7,7 +7,7 @@ import TransactionList from "./TransactionList";
 
 export default function Dashboard() {
   const {user} = useContext(AuthContext)
-  const {documents, error} = useCollection('transactions')
+  const {documents, error} = useCollection('transactions', ['uid', '==', user.uid])
   console.log(documents)
   return (
     <>
