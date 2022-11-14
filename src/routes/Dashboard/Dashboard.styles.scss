@@ -1,0 +1,90 @@
+main {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  section {
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+
+    h1 {
+      font-size: 2rem;
+      margin: 20px 0px 10px 0px;
+    }
+
+    article {
+      width: 280px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      background-color: rgb(142, 192, 142);
+      font-size: 1.6rem;
+      margin-bottom: 10px;
+      p {
+        width: 90px;
+      }
+
+      span {
+        width: 20px;
+        color: red;
+        font-weight: 700;
+        font-size: 2rem;
+      }
+    }
+  }
+  aside {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 300px;
+    margin-bottom: 20px;
+
+    h2 {
+      font-size: 2rem;
+      margin: 20px 0px 10px 0px;
+    }
+
+    form {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      width: 260px;
+      font-size: 1.6rem;
+
+      label {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 240px;
+        margin-bottom: 10px;
+      }
+      input {
+        border: 1px solid black;
+        border-radius: 20px;
+        height: 30px;
+        text-align: center;
+        width: 220px;
+      }
+      button {
+        width: 100px;
+        cursor: pointer;
+        border: 1px solid black;
+        border-radius: 20px;
+        height: 25px;
+        font-size: 1.6rem;
+        font-weight: 700;
+        background-color: rgb(55, 152, 55);
+        color: white;
+
+        &:hover {
+          background-color: rgb(91, 153, 91);
+        }
+      }
+    }
+  }
+}

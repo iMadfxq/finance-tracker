@@ -14,22 +14,18 @@ export default function Nav() {
   return (
     <>
       <header>
-        {user && <h2>Hello, {user.displayName}</h2>}
-        <nav>
-          <NavLink to="/">home</NavLink>
           {!user && (
-            <>
-          <NavLink to="/login">login</NavLink>
-          <NavLink to="/signup">signup</NavLink>
-            </>
+            <nav>
+              <NavLink to="/login">Login</NavLink>
+              <NavLink to="/signup">Signup</NavLink>
+            </nav>
           )}
-          {user && (
-            <>
-            <NavLink to="/dashboard">dashboard</NavLink>
-            <button onClick={logout}>LOGOUT</button>
-            </>
-          )}
-        </nav>
+        {user && (
+          <>
+            <span>Hello, {user.displayName}</span>
+            <a onClick={logout}>LOGOUT</a>
+          </>
+        )}
       </header>
       <Outlet />
     </>

@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useLogin } from "../../hooks/useLogin";
+import { Link } from "react-router-dom";
+import './Login.styles.scss'
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -15,9 +17,9 @@ export default function Login() {
   };
 
   return (
-    <section>
+    <section className="login">
       <h1>Login</h1>
-      <form onSubmit={handleSubmit} autoComplete="on">
+      <form  onSubmit={handleSubmit} autoComplete="on">
         <label htmlFor="email">email</label>
         <input
           id="email"
@@ -39,6 +41,7 @@ export default function Login() {
         {!isPending && <button type="submit">Submit</button>}
         {isPending && <button disabled>Processing...</button>}
       </form>
+      <p>Haven't created an account? <Link to={'/signup'}>Click here</Link></p>
       {error && <p>{error}</p>}
     </section>
   );

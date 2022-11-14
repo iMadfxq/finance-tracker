@@ -3,7 +3,6 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import "./App.scss";
 import { AuthContext } from "./context/AuthContext";
 import Dashboard from "./routes/Dashboard/Dashboard.component";
-import Home from "./routes/Home/Home.component";
 import Login from "./routes/Login/Login.component";
 import Nav from "./routes/Nav/nav.component";
 import Signup from "./routes/Signup/Signup.component";
@@ -15,13 +14,12 @@ function App() {
       {authIsReady && (
         <Routes>
           <Route path="/" element={<Nav />}>
-            <Route index path="/" element={<Home />} />
+            <Route index path="/" element={user ? <Dashboard user={user}/> : <Navigate to={'/signup'} />} />
             <Route
               path="/login"
-              element={user ? <Navigate to={"/dashboard"} /> : <Login />}
+              element={user ? <Navigate to={"/"} /> : <Login />}
             />
-            <Route path="/signup" element={user ? <Navigate to={"/dashboard"} /> :<Signup />} />
-            <Route path="/dashboard" element={!user ? <Navigate to={"/login"} /> : <Dashboard />} />
+            <Route path="/signup" element={user ? <Navigate to={"/"} /> :<Signup />} />
           </Route>
         </Routes>
       )}

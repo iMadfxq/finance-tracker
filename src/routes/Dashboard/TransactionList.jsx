@@ -4,15 +4,15 @@ export default function TransactionList({ documents }) {
 
   const {deleteDocument} = useFirestore('transactions')
   return (
-    <section>
+    <>
       {documents.map((doc) => (
-        <article>
+        <article key={doc.id}>
           <p>{doc.transactionName}</p>
-          <p>{doc.transactionAmount}</p>
-          <span onClick={() => {deleteDocument(doc.id)}}>x</span>
+          <p>${doc.transactionAmount}</p>
+          <span onClick={() => {deleteDocument(doc.id)}}>X</span>
 
         </article>
       ))}
-    </section>
+    </>
   );
 }

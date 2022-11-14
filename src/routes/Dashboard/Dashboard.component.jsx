@@ -1,11 +1,9 @@
-import { useContext } from "react";
-import { AuthContext } from "../../context/AuthContext";
+import './Dashboard.styles.scss'
 import TransactionForm from "./TransactionForm";
 import { useCollection } from "../../hooks/useCollection";
 import TransactionList from "./TransactionList";
 
-export default function Dashboard() {
-  const { user } = useContext(AuthContext);
+export default function Dashboard({user}) {
   const { documents, error } = useCollection("transactions", [
     "uid",
     "==",
@@ -13,14 +11,15 @@ export default function Dashboard() {
   ], ['createdAt', 'desc']);
   console.log(documents);
   return (
-    <>
-      <main>
+    <main>
+      <section>
+        <h1>Your transactions</h1>
         {error && <p>{error}</p>}
         {documents && <TransactionList documents={documents} />}
-      </main>
+      </section>
       <aside>
         <TransactionForm uid={user.uid} />
       </aside>
-    </>
+    </main>
   );
 }
