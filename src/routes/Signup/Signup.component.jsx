@@ -42,9 +42,8 @@ export default function Signup() {
         <label htmlFor="username">username</label>
         <input
           id="username"
-          autoComplete="username"
           required
-          type="username"
+          type="text"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
