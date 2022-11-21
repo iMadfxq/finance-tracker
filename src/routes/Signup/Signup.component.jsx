@@ -17,7 +17,7 @@ export default function Signup() {
   };
 
   return (
-    <section className="signup">
+    <main className="signup">
       <h1>Signup</h1>
       <form  onSubmit={handleSubmit} autoComplete="on">
         <label htmlFor="email">email</label>
@@ -52,6 +52,6 @@ export default function Signup() {
       </form>
       <p>Already have an account? <Link to={'/login'}>Click here</Link></p>
       {error && <p>{error}</p>}
-    </section>
+    </main>
   );
 }

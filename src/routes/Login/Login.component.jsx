@@ -17,7 +17,7 @@ export default function Login() {
   };
 
   return (
-    <section className="login">
+    <main className="login">
       <h1>Login</h1>
       <form  onSubmit={handleSubmit} autoComplete="on">
         <label htmlFor="email">email</label>
@@ -43,6 +43,6 @@ export default function Login() {
       </form>
       <p>Haven't created an account? <Link to={'/signup'}>Click here</Link></p>
       {error && <p>{error}</p>}
-    </section>
+    </main>
   );
 }

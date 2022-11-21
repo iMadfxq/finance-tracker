@@ -8,3 +8,9 @@ html {
   font-size: 62.5%;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+
+#root {
+  position: relative;
+  min-height: 100vh;
+  padding-bottom: 100px;
+}

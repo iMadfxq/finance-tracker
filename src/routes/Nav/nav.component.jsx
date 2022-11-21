@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Outlet } from "react-router-dom";
 import { NavLink } from "react-router-dom";
+import Footer from "../../components/footer/footer.component";
 import { AuthContext } from "../../context/AuthContext";
 import { useLogout } from "../../hooks/useLogout";
 
@@ -28,6 +29,7 @@ export default function Nav() {
         )}
       </header>
       <Outlet />
+      <Footer portfolio={'https://imadfxq.com/'} />
     </>
   );
 }
